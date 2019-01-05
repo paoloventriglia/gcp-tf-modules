@@ -53,6 +53,11 @@ variable name {
   description = "Name of the managed instance group."
 }
 
+variable name_prefix {
+  description = "Name prefix for the managed instance group template"
+  default = "template-"
+}
+
 variable size {
   description = "Target size of the managed instance group."
   default     = 1
@@ -261,7 +266,7 @@ variable autoscaling_lb {
 /* Health checks */
 variable http_health_check {
   description = "Enable or disable the http health check for auto healing."
-  default     = true
+  default     = false
 }
 
 variable hc_initial_delay {
