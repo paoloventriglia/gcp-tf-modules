@@ -18,6 +18,12 @@ terraform {
   backend "local" {}
 }
 
+data "terraform_remote_state" "terraform" {
+  backend = "local"
+  config { path = "/home/vagrant/tfstate/terraform.tfstate"
+  }
+}
+
 resource "google_compute_instance_template" "default" {
   count       = "${var.module_enabled ? 1 : 0}"
   project     = "${var.project}"

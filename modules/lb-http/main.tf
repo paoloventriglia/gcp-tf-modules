@@ -18,6 +18,12 @@ terraform {
   backend "local" {}
 }
 
+data "terraform_remote_state" "terraform" {
+  backend = "local"
+  config { path = "/home/vagrant/tfstate/terraform.tfstate"
+  }
+}
+
 resource "google_compute_global_forwarding_rule" "http" {
   project    = "${var.project}"
   count      = "${var.http_forward ? 1 : 0}"
