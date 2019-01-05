@@ -14,6 +14,10 @@
  * limitations under the License.
  */
 
+terraform {
+  backend "local" {}
+}
+
 resource "google_compute_global_forwarding_rule" "http" {
   project    = "${var.project}"
   count      = "${var.http_forward ? 1 : 0}"

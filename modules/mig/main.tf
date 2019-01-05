@@ -14,6 +14,10 @@
  * limitations under the License.
  */
 
+terraform {
+  backend "local" {}
+}
+
 resource "google_compute_instance_template" "default" {
   count       = "${var.module_enabled ? 1 : 0}"
   project     = "${var.project}"
