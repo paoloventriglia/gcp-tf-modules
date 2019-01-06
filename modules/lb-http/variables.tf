@@ -50,10 +50,10 @@ variable target_tags {
   type        = "list"
 }
 
-variable backends {
+/* variable backends {
   description = "Map backend indices to list of backend maps."
   type        = "map"
-}
+} */
 
 variable backend_params {
   description = "Comma-separated encoded list of parameters in order: health check path, service port name, service port, backend timeout seconds"
