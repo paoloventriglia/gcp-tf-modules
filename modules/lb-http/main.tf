@@ -94,7 +94,7 @@ resource "google_compute_backend_service" "default" {
   port_name       = "${element(split(",", element(var.backend_params, count.index)), 1)}"
   protocol        = "${var.backend_protocol}"
   timeout_sec     = "${element(split(",", element(var.backend_params, count.index)), 3)}"
-  backend         = ["${data.terraform_remote_state.mig.instance_group["${count.index}"]}"]
+  backend         = ["${data.terraform_remote_state.mig.instance_group}"]
   health_checks   = ["${element(google_compute_http_health_check.default.*.self_link, count.index)}"]
   security_policy = "${var.security_policy}"
   enable_cdn      = "${var.cdn}"
